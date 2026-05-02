@@ -1,0 +1,40 @@
+[package]
+name = "user"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+common = { git = "https://github.com/kkernick/common", features = ["singleton"] }
+nix = { version = "0.30.1", features = ["user"], default-features = false }
+
+[workspace.lints.rust]
+unused_crate_dependencies = "warn"
+
+[workspace.lints.rustdoc]
+broken_intra_doc_links = "deny"
+
+[workspace.lints.clippy]
+absolute_paths = "warn"
+arithmetic_side_effects = "warn"
+clone_on_ref_ptr = "warn"
+missing_docs_in_private_items = "warn"
+mutex_atomic = "warn"
+mutex_integer = "warn"
+str_to_string = "warn"
+unreachable = "warn"
+use_debug = "warn"
+unused_results = "warn"
+unwrap_used = "warn"
+panic = "warn"
+infinite_loop = "warn"
+correctess = "warn"
+nursery = "warn"
+pedantic = "warn"
+suspicious = "warn"
+complexity = "warn"
+perf = "warn"
+implicit_hasher = {level = "allow", priority = 1}
+needless_continue = {level = "allow", priority = 1}
+
+[lints]
+workspace = true
