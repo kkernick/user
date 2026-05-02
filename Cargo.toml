@@ -5,7 +5,7 @@ edition = "2024"
 
 [dependencies]
 common = { git = "https://github.com/kkernick/common", features = ["singleton"] }
-nix = { version = "0.30.1", features = ["user"], default-features = false }
+nix = { version = "0.31.2", features = ["user"], default-features = false }
 
 [workspace.lints.rust]
 unused_crate_dependencies = "warn"
