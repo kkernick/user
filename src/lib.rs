@@ -245,6 +245,7 @@ pub fn restore((uid, gid): (ResUid, ResGid)) -> Result<(), Error> {
         .map_err(|e| Error::new(Mode::Original, e, "setresgid"))
 }
 
+/// Obtain the setuid Singleton for the current thread.
 #[must_use]
 pub fn obtain_lock() -> Option<Singleton> {
     if *crate::SETUID {
