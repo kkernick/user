@@ -5,11 +5,13 @@
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>user::{UserScope, Mode};
 
-<span class="kw">let </span>_real_scope = UserScope::new(Mode::Real);
-<span class="doccomment">/// ... Do things with real.
-
-</span>drop(_real_scope);
-<span class="doccomment">/// No guarantee on operating mode.</span></code></pre></div>
+{
+    <span class="kw">let </span>_real_scope = UserScope::new(Mode::Real);
+    <span class="comment">// ... Do things with real.
+    
+    </span>drop(_real_scope);
+    <span class="comment">// No guarantee on operating mode.
+</span>}</code></pre></div>
 <p>To avoid managing the object, you can also use the <code>as!</code> macros to wrap an expression or block that will be run as that mode.</p>
 
 <div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>user::{Mode, as_real};
@@ -18,7 +20,7 @@
     <span class="macro">println!</span>(<span class="string">"Hello from real!"</span>);
 });
 
-<span class="doccomment">/// No guarantees on operating mode.</span></code></pre></div><h3 id="thread-safety-and-scheduling"><a class="doc-anchor" href="#thread-safety-and-scheduling">§</a>Thread Safety and Scheduling</h3>
+<span class="comment">// No guarantees on operating mode.</span></code></pre></div><h3 id="thread-safety-and-scheduling"><a class="doc-anchor" href="#thread-safety-and-scheduling">§</a>Thread Safety and Scheduling</h3>
 <p>The <code>resuid</code> and <code>resgid</code> of a program is process-wide. This means that calling <code>setresuid</code> from one thread will affect all other threads in the process. This library enforces thread-exclusive Operating Mode with a form of cooperative scheduling.</p>
 <p>When a thread initializes a new <code>UserScope</code>, the desired mode is enforced across all threads. Threads requesting another mode must wait until the current schedule has completed before they can request a new schedule. If a thread needs a mode that has already been scheduled by another, they are able to cooperatively participate without blocking the thread. Only once all cooperating threads have dropped their <code>UserScope</code>’s can another thread change the mode:</p>
 

@@ -9,11 +9,13 @@ Creating a `UserScope` object with a desired mode guarantees that mode will pers
 ```rust
 use user::{UserScope, Mode};
 
-let _real_scope = UserScope::new(Mode::Real);
-/// ... Do things with real.
-
-drop(_real_scope);
-/// No guarantee on operating mode.
+{
+    let _real_scope = UserScope::new(Mode::Real);
+    // ... Do things with real.
+    
+    drop(_real_scope);
+    // No guarantee on operating mode.
+}
 ```
 
 To avoid managing the object, you can also use the `as!` macros to wrap an expression or block that will be run as that mode.
@@ -25,7 +27,7 @@ as_real!({
     println!("Hello from real!");
 });
 
-/// No guarantees on operating mode.
+// No guarantees on operating mode.
 ```
 
 ## Thread Safety and Scheduling
