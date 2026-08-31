@@ -4,8 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-common = { git = "https://github.com/kkernick/common", features = ["singleton"] }
 nix = { version = "0.31.2", features = ["user"], default-features = false }
+parking_lot = { version = "0.12.5", default-features = false}
 
 [workspace.lints.rust]
 unused_crate_dependencies = "warn"

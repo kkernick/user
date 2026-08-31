@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"enum":["Mode"],"fn":["current","drop","obtain_lock","restore","revert","set"],"macro":[["as_effective",1],["as_real",1],["run_as",1]],"static":["GROUP","SETUID","USER"],"struct":["Error"]};
+window.SIDEBAR_ITEMS = {"enum":["Mode"],"fn":["current","drop","set"],"macro":[["as_effective",1],["as_real",1],["run_as",1]],"static":["GROUP","SETUID","USER"],"struct":["Error","UserScope"]};
